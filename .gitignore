@@ -2,22 +2,8 @@ node_modules/
 dist/
 data/
 .env
-.env.*
-!.env.example
 .vite/
 coverage/
 npm-debug.log*
 lifetrac-dev*.log
 .codex-dev-logs/
-
-# Supabase local CLI/cache state. Keep migrations/functions, ignore machine state.
-supabase/.temp/
-supabase/.branches/
-supabase/.env
-supabase/.env.*
-
-# Local OS/editor noise
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
