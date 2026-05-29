@@ -1,0 +1,9 @@
+node_modules/
+dist/
+data/
+.env
+.vite/
+coverage/
+npm-debug.log*
+lifetrac-dev*.log
+.codex-dev-logs/
