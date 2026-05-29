@@ -16,8 +16,8 @@ Without Supabase env vars, LifeTrac runs in legacy local mode: the API runs on `
 To test the hosted data layer locally, create `.env` with:
 
 ```text
-VITE_SUPABASE_URL=https://<project-ref>.supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=<supabase-publishable-key>
+VITE_SUPABASE_URL=https://mxsuovwztlwsznwkarzy.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_lKYHcGhEzNwWlTKqVBfg4g_VFcocrUl
 VITE_BASE_PATH=/
 ```
 
@@ -50,7 +50,7 @@ on conflict (email) do update set active = true;
 
 ```text
 http://127.0.0.1:5173
-https://<github-user>.github.io/<repo>/
+https://hosser5150.github.io/LifeTrac/
 ```
 
 5. Set Edge Function secrets:
@@ -58,8 +58,8 @@ https://<github-user>.github.io/<repo>/
 ```bash
 supabase secrets set GOOGLE_CALENDAR_CLIENT_ID=...
 supabase secrets set GOOGLE_CALENDAR_CLIENT_SECRET=...
-supabase secrets set GOOGLE_CALENDAR_REDIRECT_URI=https://<project-ref>.supabase.co/functions/v1/calendar-callback
-supabase secrets set LIFETRAC_APP_ORIGIN=https://<github-user>.github.io/<repo>/
+supabase secrets set GOOGLE_CALENDAR_REDIRECT_URI=https://mxsuovwztlwsznwkarzy.supabase.co/functions/v1/calendar-callback
+supabase secrets set LIFETRAC_APP_ORIGIN=https://hosser5150.github.io/LifeTrac/
 supabase secrets set SCHEDULED_SYNC_SECRET=<long-random-value>
 ```
 
@@ -78,8 +78,8 @@ supabase functions deploy calendar-disconnect
 7. In Google Cloud, add two redirect URIs:
 
 ```text
-https://<project-ref>.supabase.co/auth/v1/callback
-https://<project-ref>.supabase.co/functions/v1/calendar-callback
+https://mxsuovwztlwsznwkarzy.supabase.co/auth/v1/callback
+https://mxsuovwztlwsznwkarzy.supabase.co/functions/v1/calendar-callback
 ```
 
 The first URI is for Supabase Google sign-in. The second URI is for the separate Google Calendar read-only connection.
@@ -91,9 +91,9 @@ The first URI is for Supabase Google sign-in. The second URI is for the separate
 Set these GitHub repository variables:
 
 ```text
-VITE_BASE_PATH=/<repo>/
-VITE_SUPABASE_URL=https://<project-ref>.supabase.co
-VITE_SUPABASE_PUBLISHABLE_KEY=<supabase-publishable-key>
+VITE_BASE_PATH=/LifeTrac/
+VITE_SUPABASE_URL=https://mxsuovwztlwsznwkarzy.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_lKYHcGhEzNwWlTKqVBfg4g_VFcocrUl
 ```
 
 The Pages workflow in `.github/workflows/deploy-pages.yml` runs typecheck, tests, build, then deploys `dist`.
