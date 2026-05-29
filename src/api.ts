@@ -406,7 +406,19 @@ async function getCurrentUserId() {
 }
 
 async function invokeFunction<T>(name: string, body?: Record<string, unknown>): Promise<T> {
-  const { data, error } = await supabase.functions.invoke<T>(name, body ? { body } : undefined);
+  const {
+    data: { session }
+  } = await supabase.auth.getSession();
+  if (!session?.access_token) {
+    throw new Error(`${name}: Auth session missing. Sign out, sign back in, then retry.`);
+  }
+
+  const { data, error } = await supabase.functions.invoke<T>(name, {
+    ...(body ? { body } : {}),
+    headers: {
+      Authorization: `Bearer ${session.access_token}`
+    }
+  });
   if (error) {
     throw new Error(await getFunctionErrorMessage(name, error));
   }
